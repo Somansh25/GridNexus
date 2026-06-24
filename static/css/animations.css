@@ -1,0 +1,114 @@
+/* GridNexus Kinetic Animation Engine: Spatial transitions and state feedback */
+
+/* Section 1: Structural Viewport Transitions */
+@keyframes gnxFadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.view-panel {
+    animation: gnxFadeIn 0.45s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    will-change: opacity, transform;
+}
+
+/* Section 2: Gameplay Interaction Mechanics */
+@keyframes popIn {
+    0% { transform: scale(0.4); opacity: 0; }
+    75% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+.cell-mark {
+    display: inline-block;
+    animation: popIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Section 3: Blitz Protocol & Urgency Indicators */
+@keyframes pulseTimer {
+    0% { transform: scale(1); text-shadow: 0 0 10px rgba(255, 51, 51, 0.4); }
+    50% {
+        transform: scale(1.1);
+        text-shadow: 0 0 20px rgba(255, 51, 51, 0.8);
+        color: #ff0000;
+    }
+    100% { transform: scale(1); text-shadow: 0 0 10px rgba(255, 51, 51, 0.4); }
+}
+.timer-warning-active { animation: pulseTimer 0.5s ease-in-out infinite; }
+
+/* Section 4: Resolution & Victory Highlighting */
+@keyframes glowWinX {
+    0% { box-shadow: 0 0 5px rgba(214, 46, 108, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(214, 46, 108, 0.6), inset 0 0 10px rgba(214, 46, 108, 0.2); }
+    100% { box-shadow: 0 0 5px rgba(214, 46, 108, 0.2); }
+}
+
+@keyframes glowWinO {
+    0% { box-shadow: 0 0 5px rgba(162, 22, 62, 0.2); }
+    50% { box-shadow: 0 0 20px rgba(162, 22, 62, 0.6), inset 0 0 10px rgba(162, 22, 62, 0.2); }
+    100% { box-shadow: 0 0 5px rgba(162, 22, 62, 0.2); }
+}
+
+/* Visual feedback for winning alignments (mapped to style.css colors) */
+.winning-sequence-x {
+    animation: glowWinX 2s ease-in-out infinite;
+}
+
+.winning-sequence-o {
+    animation: glowWinO 2s ease-in-out infinite;
+}
+
+/* --- 5. Dialog & UI Overlay Components --- */
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(30px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Standard animation for modal content containers */
+.modal-content {
+    animation: modalSlideUp 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+}
+
+/* --- 6. Meta-Progression & Achievements --- */
+
+@keyframes achievementUnlock {
+    0% { transform: scale(0.85); border-color: transparent; opacity: 0; }
+    60% { transform: scale(1.08); border-color: var(--tier-gold); box-shadow: 0 0 25px rgba(251, 191, 36, 0.3); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Active state for newly unlocked achievement badges */
+.badge-just-unlocked {
+    animation: achievementUnlock 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* --- 7. Ultimate Mode Sector Logic --- */
+
+@keyframes targetedRadar {
+    0% { 
+        border-color: rgba(214, 46, 108, 0.3); 
+        box-shadow: 0 0 0 rgba(214, 46, 108, 0);
+    }
+    50% { 
+        border-color: var(--accent); 
+        box-shadow: 0 0 15px var(--accent-glow);
+    }
+    100% { 
+        border-color: rgba(214, 46, 108, 0.3);
+        box-shadow: 0 0 0 rgba(214, 46, 108, 0);
+    }
+}
+.micro-grid-sector.active-target { animation: targetedRadar 1.5s ease-in-out infinite; }
+
+/* --- 8. Toast Notification Motion Dynamics --- */
+
+@keyframes toastSlideIn {
+    from { transform: translateX(120%) scale(0.9); opacity: 0; }
+    to { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+@keyframes toastSlideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(120%); opacity: 0; }
+}
+
+.toast-notification.toast-show { animation: toastSlideIn 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+.toast-notification.toast-hide { animation: toastSlideOut 0.3s cubic-bezier(0.755, 0.05, 0.855, 0.06) forwards; }
