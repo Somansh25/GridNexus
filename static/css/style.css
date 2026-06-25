@@ -543,7 +543,7 @@ button {
 .setup-box {
     background-color: var(--surface-card);
     max-width: 550px;
-    margin: 2rem auto;
+    margin: 1rem auto;
     padding: 3rem;
     border-radius: var(--radius-lg);
     border: 1px solid rgba(214, 46, 108, 0.1);
@@ -1017,7 +1017,7 @@ button {
 
 /* Large Monitors (≥ 1025px) */
 @media (min-width: 1025px) {
-    .app-container { padding: 3rem 1rem; }
+    .app-container { padding: 1.5rem 1rem; }
     .variant-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
