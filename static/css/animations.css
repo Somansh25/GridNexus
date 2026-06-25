@@ -49,10 +49,12 @@
 /* Visual feedback for winning alignments (mapped to style.css colors) */
 .winning-sequence-x {
     animation: glowWinX 2s ease-in-out infinite;
+    border: 3px solid var(--player-x);
 }
 
 .winning-sequence-o {
     animation: glowWinO 2s ease-in-out infinite;
+    bottom: 3px solid var(--player-o);
 }
 
 /* --- 5. Dialog & UI Overlay Components --- */
